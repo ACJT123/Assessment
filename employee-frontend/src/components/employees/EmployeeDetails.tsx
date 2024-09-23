@@ -17,7 +17,7 @@ export default function EmployeeDetails({
     <div className="p-4">
       <h1 className="text-center text-xl font-bold">Employee Details</h1>
 
-      <img src={photo} alt={name} className="mx-auto my-4" />
+      <img src={photo} alt={name} className="mx-auto my-4 size-[150px] rounded-lg" />
 
       <h2 className="mb-2 text-gray-700">Name: {name}</h2>
       <p className="mb-2 text-gray-700">Department: {dept}</p>
