@@ -1,0 +1,27 @@
+input[type="text"],
+input[type="number"],
+input[type="email"],
+textarea,
+select {
+  @apply bg-gray-100 w-full p-2;
+}
+
+textarea {
+  padding: 8px !important;
+}
+
+label {
+  @apply block w-1/4;
+}
+
+.input-block {
+  @apply my-4 flex;
+}
+
+.input-block-input {
+  @apply w-3/4;
+}
+
+.error {
+  @apply text-red-500;
+}

@@ -1,0 +1,43 @@
+Requirement:
+Build a simple webapp containing a front end and backend ( Choose any framework you want)
+
+a) Create Employee page we have the following fields with both client and server side validations:
+
+1) Employee Name - text field
+2) Employee dept.- dropdown field (IT, Finance, security)
+3) Employee Active - Checkbox
+4) Employee Number - Number input field.
+5) Employee Email -  Email format text field.
+6) Employee Address - Multi text field.
+7) Employee Photo - I should be able upload photo and see the preview of photo next to it.
+
+Below the form you can have one create and clear buttons, "Create" button text changes to "Edit" upon selecting the employee in the below list (grid).
+
+b) Below the create form you need to show the list of saved employee details in the list(grid) where in there should be and option to  edit, delete, view
+Edit : If I click on edit Populate the selected employee in the above create page up on updating it should update and clear the field with success message.
+Delete : If I delete the selected employee it should prompt me confirmation to delete the employee.
+View : When I click on view it Should show the preview in popup overlay to just show and I can close the popup and return back to main list page.
+
+
+c) Don't use any database to store the data. It should be in memory.
+
+
+Please follow the standards below:
+
+1) Form validation
+2) Error handling 
+3) Proper code comments 
+4) Follow design patterns. 
+5) Application security
+6) Code cleanliness & maintainability
+7) Code performance 
+
+
+d) Submission:
+Create a public github repository and upload the source code on the repository.
+Create a github page with steps to run the web application.
+Share the link to the github repo once completed.
+
+
+e) Deadline:
+7 days from the date of assignment sent

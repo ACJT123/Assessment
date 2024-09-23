@@ -1,0 +1,4 @@
+/* add tailwind directive */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
