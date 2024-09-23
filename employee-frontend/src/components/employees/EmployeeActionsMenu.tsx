@@ -1,20 +1,21 @@
 import { MenuProps, Dropdown } from "antd";
 import { IEmployee } from "../../types/models/Employee";
 import { MoreOutlined } from "@ant-design/icons";
+import { useSelectedContext } from "../../contexts/SelectedContext";
 
 interface EmployeeActionsMenuProps {
   employee: IEmployee;
   onViewDetails: (number: number) => void;
-  onEditEmployee: (number: number) => void;
   onDeleteEmployee: (number: number) => void;
 }
 
 export default function EmployeeActionsMenu({
   employee,
   onViewDetails,
-  onEditEmployee,
   onDeleteEmployee,
 }: EmployeeActionsMenuProps) {
+  const { setSelectedNumber } = useSelectedContext();
+
   const items: MenuProps["items"] = [
     {
       label: "View Details",
@@ -25,7 +26,7 @@ export default function EmployeeActionsMenu({
       label: "Edit",
       key: "2",
       onClick: () => {
-        onEditEmployee(employee.number);
+        setSelectedNumber(employee.number);
       },
     },
     {

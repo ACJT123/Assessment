@@ -4,10 +4,7 @@ import EmployeeDetails from "./EmployeeDetails";
 import EmployeeActionsMenu from "./EmployeeActionsMenu";
 import { useDeleteEmployee } from "../../hooks/useDeleteEmployee";
 
-export default function EmployeeListItem({
-  employee,
-  selectedNumber,
-}: IEmployeeListItemProps) {
+export default function EmployeeListItem({ employee }: IEmployeeListItemProps) {
   const { deleteConfirmation, contextHolder } = useDeleteEmployee();
 
   const viewEmployee = (number: number) => {
@@ -29,7 +26,6 @@ export default function EmployeeListItem({
       <EmployeeActionsMenu
         employee={employee}
         onViewDetails={viewEmployee}
-        onEditEmployee={selectedNumber}
         onDeleteEmployee={deleteConfirmation}
       />
 

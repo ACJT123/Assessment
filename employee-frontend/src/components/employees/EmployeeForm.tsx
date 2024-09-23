@@ -7,16 +7,16 @@ import NumberInput from "../common/NumberInput";
 import SelectInput from "../common/SelectInput";
 import TextAreaInput from "../common/TextAreaInput";
 import TextInput from "../common/TextInput";
-import { IEmployeeFormProps } from "../../types/components/employee/EmployeeForm";
 import { useEmployeeForm } from "../../hooks/useEmployeeForm";
 import { EmployeeFormMode } from "../../types/components/hooks/useEmployeeForm";
 import { message, Spin } from "antd";
 import { useEffect } from "react";
 import ImageUpload from "../common/ImageUpload";
+import { useSelectedContext } from "../../contexts/SelectedContext";
 
-export default function EmployeeForm({ selectedNumber }: IEmployeeFormProps) {
+export default function EmployeeForm() {
   const [messageApi, contextHolder] = message.useMessage();
-
+  const { selectedNumber } = useSelectedContext();
   const {
     register,
     errors,

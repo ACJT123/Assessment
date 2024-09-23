@@ -1,9 +1,8 @@
 import EmployeeListItem from "./EmployeeListItem";
-import { IEmployeeListProps } from "../../types/components/employee/EmployeeList";
 import { Spin } from "antd";
 import { useEmployeeContext } from "../../contexts/EmployeesContext";
 
-export default function EmployeeList({ selectedNumber }: IEmployeeListProps) {
+export default function EmployeeList() {
   const { employees } = useEmployeeContext();
 
   if (!employees) {
@@ -18,11 +17,7 @@ export default function EmployeeList({ selectedNumber }: IEmployeeListProps) {
 
       <div className="grid grid-cols-4 mt-8 gap-2">
         {employees.map((employee) => (
-          <EmployeeListItem
-            key={employee.number}
-            employee={employee}
-            selectedNumber={selectedNumber}
-          />
+          <EmployeeListItem key={employee.number} employee={employee} />
         ))}
       </div>
     </div>

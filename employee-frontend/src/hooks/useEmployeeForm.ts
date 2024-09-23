@@ -7,6 +7,7 @@ import { schema } from "../schemas/Employee";
 import { EmployeeFormMode } from "../types/components/hooks/useEmployeeForm";
 import { IEmployee } from "../types/models/Employee";
 import { useEmployeeContext } from "../contexts/EmployeesContext";
+import { useSelectedContext } from "../contexts/SelectedContext";
 
 export function useEmployeeForm(selectedNumber: number) {
   const [photo, setPhoto] = useState<string>("");
@@ -17,6 +18,7 @@ export function useEmployeeForm(selectedNumber: number) {
   }>();
   const [loading, setLoading] = useState<boolean>(false);
   const { refetchEmployees } = useEmployeeContext();
+  const { setSelectedNumber } = useSelectedContext();
 
   // Initialize form with react-hook-form and yupResolver
   const {
@@ -30,6 +32,8 @@ export function useEmployeeForm(selectedNumber: number) {
   });
 
   useEffect(() => {
+    console.log("selectedNumber", selectedNumber);
+
     try {
       const fetchEmployees = async () => {
         const selectedEmployee = await getEmployee(selectedNumber);
@@ -54,7 +58,7 @@ export function useEmployeeForm(selectedNumber: number) {
         }
       };
 
-      if (selectedNumber !== null) {
+      if (selectedNumber !== null && selectedNumber !== undefined) {
         setMode(EmployeeFormMode.EDIT);
         fetchEmployees();
       }
@@ -86,6 +90,9 @@ export function useEmployeeForm(selectedNumber: number) {
 
     // reset mode to create
     setMode(EmployeeFormMode.CREATE);
+
+    // reset selected number
+    setSelectedNumber(null);
   };
 
   const onSubmit = async (data: IEmployee) => {
