@@ -12,7 +12,6 @@ export function useEmployeeForm(selectedNumber: number) {
   const [mode, setMode] = useState<EmployeeFormMode>(EmployeeFormMode.CREATE);
   const [result, setResult] = useState<{
     message: string;
-    success?: boolean;
   }>();
   const [loading, setLoading] = useState<boolean>(false);
 
@@ -84,6 +83,7 @@ export function useEmployeeForm(selectedNumber: number) {
 
   const onSubmit = async (data: IEmployee) => {
     try {
+      setResult(undefined);
       setLoading(true);
 
       let result;
@@ -94,7 +94,9 @@ export function useEmployeeForm(selectedNumber: number) {
         result = await editEmployee(data);
       }
 
-      setResult(result);
+      if (result.success) {
+        window.location.reload();
+      }
     } catch (error: any) {
       const errorMsg = error.response.data;
 

@@ -31,13 +31,7 @@ export default function EmployeeForm({ selectedNumber }: IEmployeeFormProps) {
 
   useEffect(() => {
     if (result) {
-      const { message, success } = result;
-
-      if (success) {
-        messageApi.success(message);
-      } else {
-        messageApi.error(message);
-      }
+      messageApi.error(result?.message);
     }
   }, [messageApi, result]);
 
