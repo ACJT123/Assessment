@@ -1,10 +1,8 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { message, Modal } from "antd";
 import { deleteEmployee } from "../api/Employee";
-import { useEmployeeContext } from "../contexts/EmployeesContext";
 
 export function useDeleteEmployee() {
-  const { refetchEmployees } = useEmployeeContext();
   const [messageApi, contextHolder] = message.useMessage();
 
   const deleteConfirmation = (number: number) => {
@@ -16,7 +14,7 @@ export function useDeleteEmployee() {
           const result = await deleteEmployee(number);
 
           if (result.success) {
-            refetchEmployees();
+            window.location.reload();
           }
         } catch (error: any) {
           console.error(error);
