@@ -20,6 +20,7 @@ export const schema = yup.object().shape({
   number: yup
     .number()
     .required("Employee number is required")
+    .typeError("Employee number be a number")
     .min(0, "Number must be positive"),
 
   email: yup
