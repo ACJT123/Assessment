@@ -54,7 +54,6 @@ export default function EmployeeForm() {
       <form
         encType="multipart/form-data"
         onSubmit={onSubmit}
-        onReset={handleReset}
         className="w-[80%] mx-auto"
       >
         <TextInput
@@ -110,7 +109,7 @@ export default function EmployeeForm() {
         <div className="flex gap-5 items-center mt-4 justify-center">
           <Button
             label="Clear"
-            type={ButtonType.RESET}
+            onClick={handleReset}
             className="bg-slate-500 hover:bg-slate-700 text-white py-2 px-4 rounded"
           />
           <Button
