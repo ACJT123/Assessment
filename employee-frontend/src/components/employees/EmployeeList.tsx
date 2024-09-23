@@ -1,10 +1,10 @@
 import EmployeeListItem from "./EmployeeListItem";
-import { useFetchEmployees } from "../../hooks/useFetchEmployees";
 import { IEmployeeListProps } from "../../types/components/employee/EmployeeList";
 import { Spin } from "antd";
+import { useEmployeeContext } from "../../contexts/EmployeesContext";
 
 export default function EmployeeList({ selectedNumber }: IEmployeeListProps) {
-  const { employees } = useFetchEmployees();
+  const { employees } = useEmployeeContext();
 
   if (!employees) {
     return <Spin fullscreen tip="Loading" />;

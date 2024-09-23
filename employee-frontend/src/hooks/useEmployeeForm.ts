@@ -6,6 +6,7 @@ import { addEmployee, editEmployee, getEmployee } from "../api/Employee";
 import { schema } from "../schemas/Employee";
 import { EmployeeFormMode } from "../types/components/hooks/useEmployeeForm";
 import { IEmployee } from "../types/models/Employee";
+import { useEmployeeContext } from "../contexts/EmployeesContext";
 
 export function useEmployeeForm(selectedNumber: number) {
   const [photo, setPhoto] = useState<string>("");
@@ -14,6 +15,7 @@ export function useEmployeeForm(selectedNumber: number) {
     message: string;
   }>();
   const [loading, setLoading] = useState<boolean>(false);
+  const { refetchEmployees } = useEmployeeContext();
 
   // Initialize form with react-hook-form and yupResolver
   const {
@@ -95,7 +97,7 @@ export function useEmployeeForm(selectedNumber: number) {
       }
 
       if (result.success) {
-        window.location.reload();
+        refetchEmployees();
       }
     } catch (error: any) {
       const errorMsg = error.response.data;
