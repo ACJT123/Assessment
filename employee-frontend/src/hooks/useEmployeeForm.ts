@@ -9,7 +9,7 @@ import { IEmployee } from "../types/models/Employee";
 import { useEmployeeContext } from "../contexts/EmployeesContext";
 import { useSelectedContext } from "../contexts/SelectedContext";
 
-export function useEmployeeForm(selectedNumber: number) {
+export function useEmployeeForm() {
   const [photo, setPhoto] = useState<string>("");
   const [mode, setMode] = useState<EmployeeFormMode>(EmployeeFormMode.CREATE);
   const [result, setResult] = useState<{
@@ -18,7 +18,7 @@ export function useEmployeeForm(selectedNumber: number) {
   }>();
   const [loading, setLoading] = useState<boolean>(false);
   const { refetchEmployees } = useEmployeeContext();
-  const { setSelectedNumber } = useSelectedContext();
+  const { selectedNumber, setSelectedNumber } = useSelectedContext();
 
   // Initialize form with react-hook-form and yupResolver
   const {
@@ -36,7 +36,7 @@ export function useEmployeeForm(selectedNumber: number) {
 
     try {
       const fetchEmployees = async () => {
-        const selectedEmployee = await getEmployee(selectedNumber);
+        const selectedEmployee = await getEmployee(selectedNumber!);
 
         // Set the form values with the selected employee
         if (selectedEmployee) {

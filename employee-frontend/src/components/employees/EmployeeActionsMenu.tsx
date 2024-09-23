@@ -2,6 +2,7 @@ import { MenuProps, Dropdown } from "antd";
 import { IEmployee } from "../../types/models/Employee";
 import { MoreOutlined } from "@ant-design/icons";
 import { useSelectedContext } from "../../contexts/SelectedContext";
+import { memo } from "react";
 
 interface EmployeeActionsMenuProps {
   employee: IEmployee;
@@ -9,30 +10,31 @@ interface EmployeeActionsMenuProps {
   onDeleteEmployee: (number: number) => void;
 }
 
-export default function EmployeeActionsMenu({
+function EmployeeActionsMenu({
   employee,
   onViewDetails,
   onDeleteEmployee,
 }: EmployeeActionsMenuProps) {
   const { setSelectedNumber } = useSelectedContext();
+  const { number } = employee;
 
   const items: MenuProps["items"] = [
     {
       label: "View Details",
       key: "1",
-      onClick: () => onViewDetails(employee.number),
+      onClick: () => onViewDetails(number),
     },
     {
       label: "Edit",
       key: "2",
       onClick: () => {
-        setSelectedNumber(employee.number);
+        setSelectedNumber(number);
       },
     },
     {
       label: "Delete",
       key: "3",
-      onClick: () => onDeleteEmployee(employee.number),
+      onClick: () => onDeleteEmployee(number),
     },
   ];
 
@@ -44,3 +46,5 @@ export default function EmployeeActionsMenu({
     </Dropdown>
   );
 }
+
+export default memo(EmployeeActionsMenu);

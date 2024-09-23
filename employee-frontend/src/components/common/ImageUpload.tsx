@@ -26,11 +26,7 @@ export default function ImageUpload({
           )}
         </div>
 
-        <div>
-          {errors.photo && (
-            <p className="error">{errors.photo.message?.toString()}</p>
-          )}
-        </div>
+        <div>{errors && <p className="error">{errors}</p>}</div>
       </div>
     </div>
   );

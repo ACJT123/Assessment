@@ -12,11 +12,9 @@ import { EmployeeFormMode } from "../../types/components/hooks/useEmployeeForm";
 import { message, Spin } from "antd";
 import { useEffect } from "react";
 import ImageUpload from "../common/ImageUpload";
-import { useSelectedContext } from "../../contexts/SelectedContext";
 
 export default function EmployeeForm() {
   const [messageApi, contextHolder] = message.useMessage();
-  const { selectedNumber } = useSelectedContext();
   const {
     register,
     errors,
@@ -27,15 +25,17 @@ export default function EmployeeForm() {
     onSubmit,
     result,
     loading,
-  } = useEmployeeForm(selectedNumber!);
+  } = useEmployeeForm();
 
   useEffect(() => {
     if (!result) return;
 
-    if (result?.success) {
-      messageApi.success(result?.message);
+    const { success, message } = result;
+
+    if (success) {
+      messageApi.success(message);
     } else {
-      messageApi.error(result?.message);
+      messageApi.error(message);
     }
   }, [messageApi, result]);
 
@@ -101,7 +101,7 @@ export default function EmployeeForm() {
 
         <ImageUpload
           label="Employee Photo"
-          errors={errors}
+          errors={errors.photo?.message?.toString()}
           photo={photo}
           handleFileChange={handleFileChange}
         />
