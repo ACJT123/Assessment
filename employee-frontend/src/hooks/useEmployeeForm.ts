@@ -13,6 +13,7 @@ export function useEmployeeForm(selectedNumber: number) {
   const [mode, setMode] = useState<EmployeeFormMode>(EmployeeFormMode.CREATE);
   const [result, setResult] = useState<{
     message: string;
+    success?: boolean;
   }>();
   const [loading, setLoading] = useState<boolean>(false);
   const { refetchEmployees } = useEmployeeContext();
@@ -20,6 +21,7 @@ export function useEmployeeForm(selectedNumber: number) {
   // Initialize form with react-hook-form and yupResolver
   const {
     register,
+    reset,
     handleSubmit,
     setValue,
     formState: { errors },
@@ -79,6 +81,9 @@ export function useEmployeeForm(selectedNumber: number) {
     // remove photo preview
     setPhoto("");
 
+    // reset form
+    reset();
+
     // reset mode to create
     setMode(EmployeeFormMode.CREATE);
   };
@@ -94,10 +99,16 @@ export function useEmployeeForm(selectedNumber: number) {
         result = await addEmployee(data);
       } else {
         result = await editEmployee(data);
+
+        if (result.success) {
+          setResult(result);
+        }
       }
 
       if (result.success) {
+        setResult(result);
         refetchEmployees();
+        handleReset();
       }
     } catch (error: any) {
       const errorMsg = error.response.data;

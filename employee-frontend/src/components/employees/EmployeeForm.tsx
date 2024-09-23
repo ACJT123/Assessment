@@ -30,7 +30,11 @@ export default function EmployeeForm({ selectedNumber }: IEmployeeFormProps) {
   } = useEmployeeForm(selectedNumber!);
 
   useEffect(() => {
-    if (result) {
+    if (!result) return;
+
+    if (result?.success) {
+      messageApi.success(result?.message);
+    } else {
       messageApi.error(result?.message);
     }
   }, [messageApi, result]);
