@@ -29,8 +29,15 @@ export const addNewEmployee = (employee: IEmployee) => {
 export const editEmployee = (number: number, employee: IEmployee) => {
   const idx = findIndex(number);
 
-  if (idx > -1) {
+  if (idx === -1) return;
+
+  if (
+    (idx !== employee.number && findIndex(employee.number) === -1) ||
+    idx === employee.number
+  ) {
     employees[idx] = employee;
+  } else {
+    throw new Error("Employee number already exists");
   }
 };
 

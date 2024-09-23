@@ -105,7 +105,7 @@ export function useEmployeeForm() {
       if (mode === EmployeeFormMode.CREATE) {
         result = await addEmployee(data);
       } else {
-        result = await editEmployee(data);
+        result = await editEmployee(data, selectedNumber!);
 
         if (result.success) {
           setResult(result);

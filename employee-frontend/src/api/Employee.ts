@@ -26,7 +26,7 @@ export const getEmployee = async (number: number) => {
   return await getData(`http://localhost:4200/api/employee/${number}`);
 };
 
-export const editEmployee = async (data: IEmployee) => {
+export const editEmployee = async (data: IEmployee, selectedNumber: number) => {
   const formData = new FormData();
 
   for (const key in data) {
@@ -41,7 +41,7 @@ export const editEmployee = async (data: IEmployee) => {
   }
 
   return await putData(
-    `http://localhost:4200/api/employee/${data.number}`,
+    `http://localhost:4200/api/employee/${selectedNumber}`,
     formData
   );
 };
