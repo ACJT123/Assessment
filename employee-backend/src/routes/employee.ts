@@ -20,6 +20,7 @@ const router = Router();
 router.get("/", (req: Request, res: Response) => {
   try {
     const employees = getAllEmployees();
+
     res.status(200).json(employees);
   } catch (error) {
     handleErrorResponse(res, error);
@@ -30,11 +31,13 @@ router.get("/", (req: Request, res: Response) => {
 router.get("/:number", (req: Request, res: Response) => {
   try {
     const employeeNumber = Number(req.params.number);
+
     if (isNaN(employeeNumber)) {
       return res.status(400).json({ message: "Invalid employee number" });
     }
 
     const employee = getEmployee(employeeNumber);
+
     if (!employee) {
       return res.status(404).json({ message: "Employee not found" });
     }
@@ -57,10 +60,13 @@ router.post(
       const employeeExists = findIndex(employeeNumber) > -1;
 
       if (employeeExists) {
-        return res.status(400).json({ message: "Employee number already exists" });
+        return res
+          .status(400)
+          .json({ message: "Employee number already exists" });
       }
 
       addNewEmployee(req.body);
+
       res.status(201).json({ message: "Employee added", success: true });
     } catch (error) {
       handleErrorResponse(res, error);
@@ -77,6 +83,7 @@ router.put(
   (req: Request, res: Response) => {
     try {
       const employeeNumber = Number(req.params.number);
+
       if (isNaN(employeeNumber)) {
         return res.status(400).json({ message: "Invalid employee number" });
       }
@@ -93,11 +100,13 @@ router.put(
 router.delete("/:number", (req: Request, res: Response) => {
   try {
     const employeeNumber = Number(req.params.number);
+
     if (isNaN(employeeNumber)) {
       return res.status(400).json({ message: "Invalid employee number" });
     }
 
     deleteEmployee(employeeNumber);
+
     res.status(200).json({ message: "Employee deleted", success: true });
   } catch (error) {
     handleErrorResponse(res, error);
