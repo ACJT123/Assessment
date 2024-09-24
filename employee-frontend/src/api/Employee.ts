@@ -1,4 +1,5 @@
 import { deleteData, getData, postData, putData } from "../lib/http";
+import { BASE_URL } from "../types/models/Api";
 import { IEmployee } from "../types/models/Employee";
 
 export const addEmployee = async (data: IEmployee) => {
@@ -15,15 +16,15 @@ export const addEmployee = async (data: IEmployee) => {
     }
   }
 
-  return await postData("http://localhost:4200/api/employee", formData);
+  return await postData(BASE_URL, formData);
 };
 
 export const getAllEmployees = async () => {
-  return await getData("http://localhost:4200/api/employee");
+  return await getData(BASE_URL);
 };
 
 export const getEmployee = async (number: number) => {
-  return await getData(`http://localhost:4200/api/employee/${number}`);
+  return await getData(`${BASE_URL}/${number}`);
 };
 
 export const editEmployee = async (data: IEmployee, selectedNumber: number) => {
@@ -40,12 +41,9 @@ export const editEmployee = async (data: IEmployee, selectedNumber: number) => {
     }
   }
 
-  return await putData(
-    `http://localhost:4200/api/employee/${selectedNumber}`,
-    formData
-  );
+  return await putData(`${BASE_URL}/${selectedNumber}`, formData);
 };
 
 export const deleteEmployee = async (number: number) => {
-  return await deleteData(`http://localhost:4200/api/employee/${number}`);
+  return await deleteData(`{${BASE_URL}}/${number}`);
 };
