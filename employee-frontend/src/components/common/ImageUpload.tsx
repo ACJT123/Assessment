@@ -21,7 +21,12 @@ export default function ImageUpload({
 
           {photo && (
             <div className="bg-slate-100 rounded-lg p-4">
-              <img src={photo} alt="Employee" className="size-[100px]" />
+              <img
+                src={photo}
+                alt="Employee"
+                className="size-[100px]"
+                loading="lazy"
+              />
             </div>
           )}
         </div>
