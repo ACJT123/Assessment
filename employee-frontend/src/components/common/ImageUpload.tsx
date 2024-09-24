@@ -31,7 +31,7 @@ export default function ImageUpload({
           )}
         </div>
 
-        <div>{errors && <p className="error">{errors}</p>}</div>
+        {errors && <p className="error">{errors}</p>}
       </div>
     </div>
   );
