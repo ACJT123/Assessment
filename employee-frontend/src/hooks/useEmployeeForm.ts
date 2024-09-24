@@ -20,7 +20,6 @@ export function useEmployeeForm() {
   const { refetchEmployees } = useEmployeeContext();
   const { selectedNumber, setSelectedNumber } = useSelectedContext();
 
-  // Initialize form with react-hook-form and yupResolver
   const {
     register,
     reset,
@@ -38,12 +37,9 @@ export function useEmployeeForm() {
       const fetchEmployees = async () => {
         const selectedEmployee = await getEmployee(selectedNumber!);
 
-        // Set the form values with the selected employee
         if (selectedEmployee) {
-          // Set the photo URL
           setPhoto(selectedEmployee.photo);
 
-          // Set the form values
           const fields: (keyof IEmployee)[] = [
             "name",
             "dept",
@@ -54,6 +50,7 @@ export function useEmployeeForm() {
             "photo",
           ];
 
+          // Set form values
           fields.forEach((field) => setValue(field, selectedEmployee[field]));
         }
       };
@@ -73,25 +70,16 @@ export function useEmployeeForm() {
       const file = e.target.files[0];
       const fileUrl = URL.createObjectURL(file);
 
-      // Set the preview photo
       setPhoto(fileUrl);
 
-      // Set the form value for photo with the actual file object
       setValue("photo", file, { shouldValidate: true });
     }
   };
 
   const handleReset = () => {
-    // remove photo preview
     setPhoto("");
-
-    // reset form
     reset();
-
-    // reset mode to create
     setMode(EmployeeFormMode.CREATE);
-
-    // reset selected number
     setSelectedNumber(null);
   };
 
