@@ -11,5 +11,6 @@ export interface IEmployee {
   number: number;
   email: string;
   address: string;
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   photo: any;
 }
