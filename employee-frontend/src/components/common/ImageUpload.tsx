@@ -1,4 +1,4 @@
-import { SUPPORTED_IMAGE_FORMATS } from "../../types/components/common/FileUpload";
+import { SUPPORTED_IMAGE_FORMATS } from "../../types/models/FileUpload";
 import { IImageUploadProps } from "../../types/components/common/ImageUpload";
 
 export default function ImageUpload({
