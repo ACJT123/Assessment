@@ -1,9 +1,5 @@
 import { createContext, useContext, useState } from "react";
-
-interface SelectedContextType {
-  selectedNumber: null | number;
-  setSelectedNumber: (selectedNumber: null | number) => void;
-}
+import { SelectedContextType } from "../types/contexts/SelectedContext";
 
 const SelectedContext = createContext<SelectedContextType>({
   selectedNumber: null,
@@ -15,7 +11,7 @@ export const SelectedProvider = ({
 }: {
   children: React.ReactNode;
 }) => {
-  const [selectedNumber, setSelectedNumber] = useState<null | number>(null);
+  const [selectedNumber, setSelectedNumber] = useState<number | null>(null);
 
   return (
     <SelectedContext.Provider value={{ selectedNumber, setSelectedNumber }}>

@@ -1,12 +1,7 @@
 import { createContext, useContext, useEffect, useState } from "react";
 import { IEmployee } from "../types/models/Employee";
 import { getAllEmployees } from "../api/Employee";
-
-interface EmployeeContextType {
-  employees: IEmployee[];
-  loading: boolean;
-  refetchEmployees: () => void;
-}
+import { EmployeeContextType } from "../types/contexts/EmployeeContext";
 
 const EmployeeContext = createContext<EmployeeContextType>({
   employees: [],
