@@ -45,5 +45,5 @@ export const editEmployee = async (data: IEmployee, selectedNumber: number) => {
 };
 
 export const deleteEmployee = async (number: number) => {
-  return await deleteData(`{${BASE_URL}}/${number}`);
+  return await deleteData(`{${BASE_URL}/${number}`);
 };
