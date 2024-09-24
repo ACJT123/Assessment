@@ -16,7 +16,7 @@ export default function SelectInput({
             <option key={option}>{option}</option>
           ))}
         </select>
-        <p className="error">{error}</p>
+        {error && <p className="error">{error}</p>}
       </div>
     </div>
   );

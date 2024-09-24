@@ -13,7 +13,7 @@ export default function TextInput({
 
       <div className="input-block-input">
         <input type={type ?? "text"} {...register(name)} />
-        <p className="error">{error}</p>
+        {error && <p className="error">{error}</p>}
       </div>
     </div>
   );

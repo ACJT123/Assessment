@@ -11,7 +11,7 @@ export default function TextAreaInput({
       <label>{label}</label>
       <div className="input-block-input">
         <textarea {...register(name)} />
-        <p className="error">{error}</p>
+        {error && <p className="error">{error}</p>}
       </div>
     </div>
   );

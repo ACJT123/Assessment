@@ -12,7 +12,7 @@ export default function NumberInput({
 
       <div className="input-block-input">
         <input type="number" {...register(name)} defaultValue={0} />
-        <p className="error">{error}</p>
+        {error && <p className="error">{error}</p>}
       </div>
     </div>
   );
