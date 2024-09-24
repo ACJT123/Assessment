@@ -1,16 +1,9 @@
 import { MenuProps, Dropdown } from "antd";
-import { IEmployee } from "../../types/models/Employee";
 import { MoreOutlined } from "@ant-design/icons";
 import { useSelectedContext } from "../../contexts/SelectedContext";
-import { memo } from "react";
+import { EmployeeActionsMenuProps } from "../../types/components/employee/EmployeeActionsMenu";
 
-interface EmployeeActionsMenuProps {
-  employee: IEmployee;
-  onViewDetails: (number: number) => void;
-  onDeleteEmployee: (number: number) => void;
-}
-
-function EmployeeActionsMenu({
+export default function EmployeeActionsMenu({
   employee,
   onViewDetails,
   onDeleteEmployee,
@@ -46,5 +39,3 @@ function EmployeeActionsMenu({
     </Dropdown>
   );
 }
-
-export default memo(EmployeeActionsMenu);
