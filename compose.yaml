@@ -1,0 +1,14 @@
+services:
+  app:
+    build:
+      context: ./employee-frontend
+      dockerfile: Dockerfile
+    ports:
+      - "5173:5173"
+
+  backend:
+    build:
+      context: ./employee-backend
+      dockerfile: Dockerfile
+    ports:
+      - "4200:4200"
